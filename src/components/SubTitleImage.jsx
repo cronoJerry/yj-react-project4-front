@@ -4,7 +4,7 @@ export default function SubTitleImage() {
       <div className="flex p-24 space-x-24 w-full h-full items-center bg-gray-900/50">
         {/* 이미지 */}
         <div>
-          <img
+          <image
             src="http://www.daeguoperahouse.org/images/contents/img_logo_white.png"
             alt="image title"
           />

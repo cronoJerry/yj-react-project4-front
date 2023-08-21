@@ -7,6 +7,7 @@ import RentalNotice from "./app/RentalNotice";
 import RentalNoticeWrite from "./app/RentalNoticeWrite";
 import RentalNoticeDetail from "./app/RentalNoticeDetail";
 import SignUp from "./app/SignUp";
+import SignIn from "./app/SignIn";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "signup",
         element: <SignUp />,
+      },
+      {
+        path: "signin",
+        element: <SignIn />,
       },
       {
         path: "information",
