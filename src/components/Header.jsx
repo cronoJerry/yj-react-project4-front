@@ -13,13 +13,13 @@ const GNB = [
 	{ mainTitle: "대구엑스포", subTitle: "Contact", link: "/contact" },
 ];
 export default function Header() {
-	const { userLoading, isLoggedIn, user, refetch } = useUser();
+	const { isLoggedIn, user, refetch } = useUser();
 	const onLogout = async () => {
 		await logout();
+		alert("logout");
 		refetch();
 	};
 
-	console.log(userLoading, isLoggedIn, user);
 	return (
 		<div className='w-full flex justify-center h-header-height shadow-md'>
 			{/* 좌우 여백을 위한 박스 */}
@@ -53,7 +53,15 @@ export default function Header() {
 						{isLoggedIn === "true" ? (
 							<>
 								<div>{user.email}</div>
-								<div onClick={onLogout}>logout</div>
+								<div className='w-8 h-8 rounded-full bg-slate-900 overflow-hidden'>
+									<img src={user.avatar} alt='profile' />
+								</div>
+								<div
+									onClick={onLogout}
+									className='cursor-pointer'
+								>
+									logout
+								</div>
 							</>
 						) : (
 							<>

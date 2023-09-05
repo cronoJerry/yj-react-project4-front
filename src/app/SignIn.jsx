@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { userSignIn } from "../api";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 export default function SignIn() {
 	const {
@@ -18,19 +19,19 @@ export default function SignIn() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm({ mode: "onChange" });
-	const navigate = useNavigate();
 
+	const navigate = useNavigate();
 	const { data, mutate } = useMutation(userSignIn);
+
 	if (data?.ok === "false") {
-		console.log("logIn error");
+		console.log("로그인 에러");
 	}
 	if (data?.ok === "true") {
 		navigate("/");
 	}
-
 	const onSubmit = (data) => {
-		console.log(data);
 		mutate(data);
+		console.log(data);
 	};
 
 	return (
@@ -98,9 +99,14 @@ export default function SignIn() {
 						</div>
 						{/* 회원가입, 아이디찾기, 비밀번호찾기 */}
 						<div className='flex justify-center w-full space-x-3 my-8'>
-							<div>
-								<KakaoAsset />
-							</div>
+							<Link
+								to={`https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}
+`}
+							>
+								<div>
+									<KakaoAsset />
+								</div>
+							</Link>
 							<div>
 								<FacebookAsset />
 							</div>
